@@ -12,6 +12,7 @@ import java.util.Map;
 
 import db.DB;
 import db.DbException;
+import db.DbIntegrityException;
 import model.dao.VendedorDAO;
 import model.entities.Departamento;
 import model.entities.Vendedor;
@@ -95,7 +96,7 @@ public class VendedorDaoJDBC implements VendedorDAO {
 			st.executeUpdate();			
 			
 		} catch (SQLException e) {
-			throw new DbException(e.getMessage());
+			throw new DbIntegrityException(e.getMessage());
 		} finally {
 			DB.closeStatement(st);
 		}		
